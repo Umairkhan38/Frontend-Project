@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { TextField, Button, Container, Grid, InputLabel , IconButton } from '@mui/material';
+import { TextField ,Button,  Container, Grid, InputLabel , IconButton } from '@mui/material';
 import '../../css/CustomerFrom.css';
+import AddIcon from '@mui/icons-material/Add';
 import DeleteIcon from '@mui/icons-material/Delete';
 import moment from 'moment';
 import axios from 'axios';
@@ -165,12 +166,15 @@ export default function Customer() {
 
   return (
 
-    <Container sx= {{marginTop:"20px"}}>
-      <form onSubmit={handleSubmit}>
+ 
+    <Container sx= {{marginTop:"20px", backgroundColor:"rgb(250, 251, 251)"}}>
+      <h1 style={{marginLeft:"20px"}}>New Customer Registration :</h1>
+      {/* <hr /> */}
+      <form onSubmit={handleSubmit} style={{backgroundColor:"white", padding:"25px",border:"1px solid lightgray", borderRadius:"10px", boxShadow:"rgba(90, 114, 123, 0.11) 0px 7px 30px 0px", margin:"15px"}}>
         <Grid container spacing={2}>
          {rId &&<Grid item xs={4}>
             <InputLabel sx={{color:"black"}} >Customer Reference No</InputLabel >
-            <TextField sx={{backgroundColor:"white"}}
+            <TextField sx={{borderColor:"#DEE3E9", borderRadius:"10px" , backgroundColor:"white"}}
               name="customerReferenceNumber"
               value={formData.customerReferenceNumber}
             />
@@ -178,7 +182,7 @@ export default function Customer() {
 
 }          <Grid item xs={4}>
             <InputLabel sx={{color:"black"}} >Branch ID</InputLabel >
-            <TextField sx={{backgroundColor:"white"}}
+            <TextField sx={{borderColor:"#DEE3E9", borderRadius:"10px" , backgroundColor:"white"}}
               name="branchId"
               value={formData.branchId}
               onChange={handleChange}
@@ -187,21 +191,21 @@ export default function Customer() {
           </Grid>
           <Grid item xs={4}>
             <InputLabel sx={{color:"black"}} >Name</InputLabel >
-            <TextField sx={{backgroundColor:"white"}}
+            <TextField sx={{borderColor:"#DEE3E9", borderRadius:"10px" , backgroundColor:"white"}}
               name="name"
               value={formData.name}
               onChange={handleChange}
             />
-          </Grid>
+          </Grid> 
 
           {formData?.customerDetail?.map((detail, index) => (
-            <div style={{display:'flex',flexDirection:'column' ,margin:"20px", padding: "10px 20px 20px 20px", borderRadius: "8px", border: "1px solid #ddd", backgroundColor: "#f9f9f9" }}  key = {index}>
+            <div style={{display:'flex',flexDirection:'column' ,margin:"20px", padding: "10px 20px 20px 20px", borderRadius: "8px", border: "1px solid #ddd", backgroundColor: "white", boxShadow:"rgba(90, 114, 123, 0.11) 0px 7px 30px 0px"  }}  key = {index}>
               {/* <Grid> */}
           <h4 >Customer Detail {index + 1}</h4>
       <Grid container  spacing={2}>
         <Grid item xs={12} sm={4}>
           <InputLabel sx={{color:"black"}} >Address</InputLabel >
-          <TextField sx={{backgroundColor:"white"}}
+          <TextField sx={{borderColor:" #DEE3E9", borderRadius:"10px" , backgroundColor:"white"}}
             name="address"
             value={detail.address}
             onChange={e => handleChange(e, index)}
@@ -210,7 +214,7 @@ export default function Customer() {
         </Grid>
         <Grid item xs={12} sm={4}>
           <InputLabel sx={{color:"black"}} >Contact Person</InputLabel >
-          <TextField sx={{backgroundColor:"white"}}
+          <TextField sx={{borderColor:"#DEE3E9", borderRadius:"10px" , backgroundColor:"white"}}
             name="contactPerson"
             value={detail.contactPerson}
             onChange={e => handleChange(e, index)}
@@ -219,7 +223,7 @@ export default function Customer() {
         </Grid>
         <Grid item xs={12} sm={4}>
           <InputLabel sx={{color:"black"}} >Industry Id</InputLabel >
-          <TextField sx={{backgroundColor:"white"}}
+          <TextField sx={{borderColor:"#DEE3E9", borderRadius:"10px" , backgroundColor:"white"}}
             name="industryId"
             value={detail.industryId}
             onChange={e => handleChange(e, index)}
@@ -228,7 +232,7 @@ export default function Customer() {
         </Grid>
         <Grid item xs={12} sm={4}>
           <InputLabel sx={{color:"black"}} >Designation</InputLabel >
-          <TextField sx={{backgroundColor:"white"}}
+          <TextField sx={{borderColor:"#DEE3E9", borderRadius:"10px" , backgroundColor:"white"}}
             name="designation"
             value={detail.designation}
             onChange={e => handleChange(e, index)}
@@ -237,7 +241,7 @@ export default function Customer() {
         </Grid>
         <Grid item xs={12} sm={4}>
           <InputLabel sx={{color:"black"}} >Telephone Number</InputLabel >
-          <TextField sx={{backgroundColor:"white"}}
+          <TextField sx={{borderColor:"#DEE3E9", borderRadius:"10px" , backgroundColor:"white"}}
             name="telephoneNos"
             value={detail.telephoneNos}
             onChange={e => handleChange(e, index)}
@@ -246,7 +250,7 @@ export default function Customer() {
         </Grid>
         <Grid item xs={12} sm={4}>
           <InputLabel sx={{color:"black"}} >Ecc No</InputLabel >
-          <TextField sx={{backgroundColor:"white"}}
+          <TextField sx={{borderColor:"#DEE3E9", borderRadius:"10px" , backgroundColor:"white"}}
             name="eccNo"
             value={detail.eccNo}
             onChange={e => handleChange(e, index)}
@@ -255,7 +259,7 @@ export default function Customer() {
         </Grid>
         <Grid item xs={12} sm={4}>
           <InputLabel sx={{color:"black"}} >SSt No</InputLabel >
-          <TextField sx={{backgroundColor:"white"}}
+          <TextField sx={{borderColor:"#DEE3E9", borderRadius:"10px" , backgroundColor:"white"}}
             name="sstNo"
             value={detail.sstNo}
             onChange={e => handleChange(e, index)}
@@ -264,7 +268,7 @@ export default function Customer() {
         </Grid>
         <Grid item xs={12} sm={4}>
           <InputLabel sx={{color:"black"}} >GST No</InputLabel >
-          <TextField sx={{backgroundColor:"white"}}
+          <TextField sx={{borderColor:"#DEE3E9", borderRadius:"10px" , backgroundColor:"white"}}
             name="gstNo"
             value={detail.gstNo}
             onChange={e => handleChange(e, index)}
@@ -273,7 +277,7 @@ export default function Customer() {
         </Grid>
         <Grid item xs={12} sm={4}>
           <InputLabel sx={{color:"black"}} >Pan No</InputLabel >
-          <TextField sx={{backgroundColor:"white"}}
+          <TextField sx={{borderColor:"#DEE3E9", borderRadius:"10px" , backgroundColor:"white"}}
             name="panNo"
             value={detail.panNo}
             onChange={e => handleChange(e, index)}
@@ -282,7 +286,7 @@ export default function Customer() {
         </Grid>
         <Grid item xs={12} sm={4}>
           <InputLabel sx={{color:"black"}} >CST No</InputLabel >
-          <TextField sx={{backgroundColor:"white"}}
+          <TextField sx={{borderColor:"#DEE3E9", borderRadius:"10px" , backgroundColor:"white"}}
             name="cstNo"
             value={detail.cstNo}
             onChange={e => handleChange(e, index)}
@@ -291,6 +295,7 @@ export default function Customer() {
         </Grid>
         <Grid item xs={12}>
           <IconButton onClick={() => handleDeleteCustomerDetail(index)} style={{ backgroundColor: "red", color: "white" }}>
+
             <DeleteIcon />
           </IconButton>
         </Grid>
@@ -300,11 +305,12 @@ export default function Customer() {
    
           ))}
 
-            <Button style={{backgroundColor:"green", color:"white", height:'30px',marginTop:'2rem', marginLeft:"18px"}} onClick={handleAddCustomerDetail}>+ Add Customer Details</Button>
+<Button style={{backgroundColor:"#03C9D7", color:"white", height:'30px',marginTop:'2rem', marginLeft:"18px"}} onClick={handleAddCustomerDetail}><AddIcon/> Add Customer Details</Button>
           </Grid>
           <Grid item xs={4}>
           <Grid item xs={4}  >
-        {!rId ?( <Button type="submit" onClick ={handleSubmit} variant="contained" style={{backgroundColor:"black",padding:"8px 12px",marginTop:"8px"}}>Submit</Button>) : (
+        
+        {!rId ?( <Button type="submit" onClick ={handleSubmit} variant="contained" style={{backgroundColor:"black",padding:"8px 12px",marginTop:"10px"}}>Submit</Button>) : (
           <>
             <Button  variant="contained" onClick={handleUpdate}   style={{backgroundColor:"blue",padding:"8px 12px",marginTop:"8px"}}>Update</Button>
             <Button  variant="contained" onClick={cancelUpdate}   style={{backgroundColor:"gray",padding:"8px 12px",marginTop:"8px", marginLeft:"15px"}}>Cancel</Button> </>)}
