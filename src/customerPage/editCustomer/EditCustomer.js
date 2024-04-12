@@ -103,6 +103,7 @@ export default function EditCustomer() {
         <Table sx={{ minWidth: 500 }} aria-label="customized table">
           <TableHead>
             <TableRow>
+              <StyledTableCell>Sr No</StyledTableCell>
               <StyledTableCell>Customer ID</StyledTableCell>
               <StyledTableCell align="right">Reference Number</StyledTableCell>
               <StyledTableCell align="right">Name</StyledTableCell>
@@ -117,6 +118,9 @@ export default function EditCustomer() {
           <TableBody>
             {data.map((row,index) => (
               <StyledTableRow key={index}>
+                <StyledTableCell component="th" scope="row">
+                  {index+1}
+                </StyledTableCell>
                 <StyledTableCell component="th" scope="row">
                   {row.customerId}
                 </StyledTableCell>

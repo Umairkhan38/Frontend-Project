@@ -168,7 +168,7 @@ export default function Customer() {
 
  
     <Container sx= {{marginTop:"20px", backgroundColor:"rgb(250, 251, 251)"}}>
-      <h1 style={{marginLeft:"20px"}}>New Customer Registration :</h1>
+      {!rId?<h1 style={{marginLeft:"20px"}}>New Customer Registration :</h1> : <h1 style={{marginLeft:"20px"}}>Update Customer :</h1> }
       {/* <hr /> */}
       <form onSubmit={handleSubmit} style={{backgroundColor:"white", padding:"25px",border:"1px solid lightgray", borderRadius:"10px", boxShadow:"rgba(90, 114, 123, 0.11) 0px 7px 30px 0px", margin:"15px"}}>
         <Grid container spacing={2}>
