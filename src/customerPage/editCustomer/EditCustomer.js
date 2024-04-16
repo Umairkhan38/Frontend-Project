@@ -104,7 +104,6 @@ export default function EditCustomer() {
           <TableHead>
             <TableRow>
               <StyledTableCell>Sr No</StyledTableCell>
-              <StyledTableCell>Customer ID</StyledTableCell>
               <StyledTableCell align="right">Reference Number</StyledTableCell>
               <StyledTableCell align="right">Name</StyledTableCell>
               <StyledTableCell align="right">Branch ID</StyledTableCell>
@@ -121,9 +120,7 @@ export default function EditCustomer() {
                 <StyledTableCell component="th" scope="row">
                   {index+1}
                 </StyledTableCell>
-                <StyledTableCell component="th" scope="row">
-                  {row.customerId}
-                </StyledTableCell>
+              
                 <StyledTableCell align="right">{row.customerReferenceNumber}</StyledTableCell>
                 <StyledTableCell align="right">{row.name}</StyledTableCell>
                 <StyledTableCell align="right">{row.branchId}</StyledTableCell>
