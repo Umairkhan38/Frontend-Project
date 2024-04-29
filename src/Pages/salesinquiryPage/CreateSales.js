@@ -220,7 +220,7 @@ export default function CreateSales() {
 
     const res = await axios.post("https://lens-svc.azurewebsites.net/lens-svc/salesInquiry/save", formData);
     console.log("response is ",res.data);
-    navigate(`/registerSuccess/${res.data}`);
+    navigate(`/salesSuccess/${res.data}`);
 
     // Add form submission logic here
 

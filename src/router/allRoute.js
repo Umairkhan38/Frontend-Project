@@ -8,6 +8,7 @@ import EditCustomer from "../Pages/customerPage/editCustomer/EditCustomer.js";
 import RegistrationSuccessPage from "../Pages/customerPage/createCustomer/CustomerSuccess.js";
 import UpdateSuccessPage from "../Pages/customerPage/editCustomer/UpdateSuccess.js";
 import CreateSales from "../Pages/salesinquiryPage/CreateSales.js";
+import SalesSuccessPage from "../Pages/salesinquiryPage/SalesSuccess.js";
 
 
 const AllRoute = () => {
@@ -21,7 +22,7 @@ const AllRoute = () => {
       <Route path="/Customer" element={<Customer/>}/>
       <Route path="/editCustomer" element={<EditCustomer/>}/>
       <Route path="/registerSuccess/:id" element={<RegistrationSuccessPage />}/>
-      <Route path="/registerSuccess/:id" element={<RegistrationSuccessPage />}/>
+      <Route path="/salesSuccess/:id" element={<SalesSuccessPage />}/>
       <Route path="/updateSuccess/:id" element={<UpdateSuccessPage />}/>
     </Routes>
   );
