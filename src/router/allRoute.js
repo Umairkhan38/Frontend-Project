@@ -1,19 +1,19 @@
 import {Routes , Route } from "react-router-dom";
 // import {Form2} from '../form/form2'
-import {SalesInquiry} from '../formPage/salesInquiryForm/salesinquiry'
 import {Quotation} from '../formPage/quotationId/quotationId'
 import {OfmId} from '../formPage/ofmId/ofmId'
 import {OfmCommunication} from '../formPage/ofmcommunication/ofmcommunication'
-import Customer from '../customerPage/createCustomer/Customer.js';
-import EditCustomer from "../customerPage/editCustomer/EditCustomer.js";
-import RegistrationSuccessPage from "../customerPage/createCustomer/CustomerSuccess.js";
-import UpdateSuccessPage from "../customerPage/editCustomer/UpdateSuccess.js";
+import Customer from '../Pages/customerPage/createCustomer/Customer.js';
+import EditCustomer from "../Pages/customerPage/editCustomer/EditCustomer.js";
+import RegistrationSuccessPage from "../Pages/customerPage/createCustomer/CustomerSuccess.js";
+import UpdateSuccessPage from "../Pages/customerPage/editCustomer/UpdateSuccess.js";
+import CreateSales from "../Pages/salesinquiryPage/CreateSales.js";
 
 
 const AllRoute = () => {
   return (
     <Routes>
-      <Route path="/SalesInquiry" element={<SalesInquiry/>} />
+      <Route path="/SalesInquiry" element={<CreateSales />} />
       <Route path="/Quotation" element={<Quotation/>} />
       <Route path="/OfmId" element={<OfmId/>} />
       <Route path="/OfmCommunication" element={<OfmCommunication/>}/>  

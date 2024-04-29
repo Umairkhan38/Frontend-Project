@@ -70,11 +70,9 @@ const CustomSidebar = () => {
           backgroundColor: "transparent !important",
         }
 
-      }}
+      }}>
 
 
-
-    >
       <div style={{ display: "flex", height: "100vh", justifyContent: "center" }}>
         <Sidebar
           id="custom-sidebar"
@@ -175,13 +173,13 @@ const CustomSidebar = () => {
                 icon={<PersonIcon />} 
                 styles={{ subMenu: subMenuItemStyle }}>
  
-                <MenuItem icon={<EditIcon />}
+                <MenuItem icon={<AddBoxIcon />}
                   onClick={() => setIsCollapsed(!isCollapsed)}>
-                    <Link to="/SalesInquiry">Edit</Link>
+                    <Link to="/SalesInquiry">New</Link>
                   </MenuItem>
 
-
-                  <MenuItem icon={<EditIcon />}>Edit</MenuItem>
+                  <MenuItem icon={<EditIcon />}  onClick={() => setIsCollapsed(!isCollapsed)}>
+                    <Link to="/SalesInquiry">Edit</Link></MenuItem>
                 </SubMenu>
 
                 {/* Quotation */}

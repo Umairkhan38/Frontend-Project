@@ -12,7 +12,9 @@ import EditIcon from '@mui/icons-material/Edit';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import {useNavigate} from 'react-router-dom';
-import {AppContext} from '../../contextAPI/AppContext';
+// import {AppContext} from '../../contextAPI/AppContext';
+// import { DataGrid } from '@mui/x-data-grid';
+
 
 
 
@@ -44,7 +46,7 @@ export default function EditCustomer() {
   const [isDeleted, setIsDeleted] = useState(false);  
   const [itemsPerPage, setItemsPerPage] = useState(5); // Adjust as needed
   const navigate = useNavigate();  
-  const { editData, setEditData } = useContext(AppContext); // Accessing context values
+  // const { editData, setEditData } = useContext(AppContext); // Accessing context values
 
 
   // const indexOfLastItem = currentPage * itemsPerPage;
@@ -97,6 +99,8 @@ export default function EditCustomer() {
       setCurrentPage(0)
   }
 
+
+
   return (
     <div>
       <TableContainer component={Paper} style={{ width: '86%', margin: '10px auto' }}>
@@ -138,10 +142,6 @@ export default function EditCustomer() {
         }
         </Table>
       </TableContainer>
-
-        
-
-
 
       <div style={{ display: 'flex', justifyContent: 'center', alignItems:'center', marginTop: '20px' }}>
 
