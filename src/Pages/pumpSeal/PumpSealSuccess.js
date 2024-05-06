@@ -18,7 +18,7 @@ const PumpSealSuccessPage = () => {
       <Typography variant="body1" style={{ marginBottom: '20px' }}>
          Your Pump Seal ID is <b>: {id}</b>
       </Typography>
-      <Button variant="contained" color="primary" onClick={()=>navigate('/editCustomer')}>
+      <Button variant="contained" color="primary" onClick={()=>navigate('/editPump')}>
          Pump Seal Details
       </Button>
     </Container>

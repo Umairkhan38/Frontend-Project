@@ -21,7 +21,6 @@ export default function CreatePumpSeal() {
 
   const [formData, setFormData] = useState({
     branch: '',
-    pumpSealDrfNumber: '',
     endUser: '',
     costingRequirement:true,
     customerAddress: '',
@@ -107,52 +106,119 @@ export default function CreatePumpSeal() {
   
   
 
-//    useEffect(()=>{
-//     if(pId!==0){
-//       axios.get(`https://lens-svc.azurewebsites.net/lens-svc/salesInquiry/get/${pId}`)
-//       .then(res=>{
-//         const {data} = res;
-//           setFormData(data);
-//           console.log("the pId fetched data is ",data)
+   useEffect(()=>{
+    if(pId!==0){
+      axios.get(`https://lens-svc.azurewebsites.net/lens-svc/pumSeal/get?pumSealDrfNo=${pId}`)
+      .then(res=>{
+        const {data} = res;
+          setFormData(data);
+          console.log("the pId fetched data is ",data)
 
-//       }) 
-//       .catch(err=>{
-//         console.log(err)
-//       })
+      }) 
+      .catch(err=>{
+        console.log(err)
+      })
 
-//     }else{
-//       setFormData(
-//         {
-//           companyId: "",
-//           categoryId: "",
-//           categoryName: "",
-//           customerId: "",
-//           customerName: "",
-//           customerAddress: "",
-//           contactPerson: "",
-//           designation: "",
-//           specialComments: "",
-//           mobileNo: "",
-//           source: "",
-//           branchId: "",
-//           insertedByUserId: "123",
-//           lastUpdatedByUserId: "1231",
-//           industry: "",
-//           salesItems: []
-//       })
+    }else{
+      setFormData(
+       {
+    branch: '',
+    endUser: '',
+    costingRequirement:true,
+    customerAddress: '',
+    make: '',
+    model: '',
+    impeller: '',
+    shaft: '',
+    sealChamber: '',
+    bearingBracket: '',
+    tagNumber: '',
+    arrangement: '',
+    pumpType: '',
+    stuffingBox: '',
+    stage: '',
+    casting: '',
+    series: '',
+    sealArrangement: '',
+    sealType: '',
+    performance: '',
+    flushPlan: '',
+    barrierOrBufferPlan: '',
+    quenchPlan: '',
+    barrierOrBufferFluid: '',
+    designOffered: '',
+    sizeAvailable: '',
+    materialCode: '',
+    sealSeries: '',
+    shaftSize: '',
+    boreDia: '',
+    boreDepth: '',
+    nearestObstruction: '',
+    allPressureUnit: '',
+    totalHeat: '',
+    suctionPressure: '',
+    dischargePressure: '',
+    directionOfRotation: '',
+    speed: '',
+    boxPressure: '',
+    operatingFluid: '',
+    allTempPressureUnit: '',
+    nature: '',
+    operatingTemperature: '',
+    minOperatingTemperature: '',
+    spGravity: '',
+    freezePoint: '',
+    boilPoint: '',
+    viscosity: '',
+    viscosityUnit: '',
+    percentageOfSolid: '',
+    grainPoint: '',
+    description: '',
+    d1SleeveOd: '',
+    studHoles: '',
+    d2StuffingBoxId: '',
+    d4StuffingBoxBore: '',
+    d5SpigotDia: '',
+    d51: '',
+    d52: '',
+    d9BoltCircle: '',
+    boltSize: '',
+    l11: '',
+    l12: '',
+    l1SleeveExten: '',
+    l2ShaftHub: '',
+    l3ThreadLength: '',
+    l8sbDepth: '',
+    l9NearObstr: '',
+    alpha: '',
+    beta: '',
+    theta: '',
+    createdByUserGUID: '',
+    lastEditedByUserGUID: '',
+    rowguid: '',
+    region: '',
+    address: '',
+    emailId: '',
+    srNo:'',
+    dshaftOd: '',
+    sboxCover: '',
+    mnumberOfBolts: '',
+    lraisedCol: ''
+  })
 
-//     }
+    }
     
     
-//   },[pId])
+  },[pId])
 
 
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    const newFormData = { ...formData };
-      newFormData[name] = value; 
-    setFormData(newFormData);
+    setFormData(prevState => ({
+      ...prevState,
+      [name]: value
+    }));
   };
 
 
@@ -195,25 +261,16 @@ export default function CreatePumpSeal() {
   const handleUpdate = async (e)=>{
     e.preventDefault();
     const dateTime = moment().format('YYYY-MM-DD HH:mm:ss');
+    formData.lastEditedDate=dateTime;
+    
+      console.log("formData sales is ",formData);
 
-    if (formData.salesItems && formData.salesItems.length > "") {
-      // Update insertedOn and lastUpdatedOn for the last item in customerDetail
-      formData.salesItems[formData.salesItems.length -1].lastUpdatedOn = dateTime;
-      // formData.salesItems[formData.salesItems.length -1].insertedOn = dateTime;
-    } 
-      // If customerDetail is not defined or empty, set insertedOn and lastUpdatedOn for formData
-      // formData.insertedOn = dateTime;
-      formData.lastUpdatedOn = dateTime;
-     
-      console.log("formData inpide update ",formData);
-      
-      
-    const res = await axios.put("https://lens-svc.azurewebsites.net/lens-svc/salesInquiry/Update", formData);
+    const res = await axios.put("https://lens-svc.azurewebsites.net/lens-svc/pumSeal/Update", formData);
     console.log("response from update is ",res.data);
 
     
     pId="";
-    navigate(`/salesSuccess/${formData.inquiryNumber}`);
+    navigate(`/pumpSealSuccess/${formData.pumpSealDrfNumber}`);
   }
 
 
@@ -609,12 +666,24 @@ export default function CreatePumpSeal() {
     {Object.keys(formData).map((key, index) => (
       <Grid item xs={4} key={index}>
         <InputLabel className="ip-label">{key}</InputLabel>
-        <TextField
-          className="text-field"
-          name={key}
-          value={formData[key]}
-          onChange={handleChange}
-        />
+        {key === 'costingRequirement' ? (
+            <select
+              className="text-field" style={{width:"55%", padding:"10px"}}
+              name={key}
+              value={formData[key]}
+              onChange={handleChange}
+            >
+              <option value={true}>True</option>
+              <option value={false}>False</option>
+            </select>
+          ) : (
+            <TextField
+              className="text-field" 
+              name={key}
+              value={formData[key]}
+              onChange={handleChange}
+            />
+          )}
       </Grid>
     ))}
   </Grid>

@@ -185,10 +185,10 @@ const CustomSidebar = () => {
                 {/* Drawing Requisition */}
                 <SubMenu label="Drawing Requisition" icon={<ImageIcon />} styles={{ subMenu: subMenuItemStyle }}>
                   <Link to ='/createPump'><MenuItem icon={<AddBoxIcon />}>PumpSeal New </MenuItem></Link>
+                  <Link to ='/editPump'><MenuItem icon={<AddBoxIcon />}>Edit</MenuItem></Link>
                   <MenuItem icon={<AddBoxIcon />}>Agitator Seal New</MenuItem>
                   <MenuItem icon={<AddBoxIcon />}>Rotary Join New</MenuItem>
                   <MenuItem icon={<AddBoxIcon />}>API Plan New</MenuItem>
-                  <MenuItem icon={<AddBoxIcon />}>Edit</MenuItem>
                   <MenuItem icon={<AddBoxIcon />}>Status</MenuItem>
                   <MenuItem icon={<AddBoxIcon />}>Status</MenuItem>
                   <MenuItem icon={<AddBoxIcon />}>Status Filter</MenuItem>

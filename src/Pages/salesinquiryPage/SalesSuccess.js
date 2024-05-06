@@ -5,7 +5,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 
 
 const SalesSuccessPage = () => {
-    const {id} = useParams();
+    const {sId} = useParams();
     const navigate = useNavigate();
     
     
@@ -16,7 +16,7 @@ const SalesSuccessPage = () => {
         Sales Entry Successful!
       </Typography>
       <Typography variant="body1" style={{ marginBottom: '20px' }}>
-        Thank you for Connecting with us, Your Sales Number is <b>: {id}</b>
+        Thank you for Connecting with us, Your Sales Number is <b>: {sId}</b>
       </Typography>
       <Button variant="contained" color="primary" onClick={()=>navigate('/')}>
         Home
