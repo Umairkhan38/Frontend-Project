@@ -9,12 +9,19 @@ import RegistrationSuccessPage from "../Pages/customerPage/createCustomer/Custom
 import UpdateSuccessPage from "../Pages/customerPage/editCustomer/UpdateSuccess.js";
 import CreateSales from "../Pages/salesinquiryPage/CreateSales.js";
 import SalesSuccessPage from "../Pages/salesinquiryPage/SalesSuccess.js";
+import EditSales from "../Pages/salesinquiryPage/EditSales.js";
+import CreatePumpSeal from "../Pages/pumpSeal/CreatePumpSeal.js";
+import PumpSealSuccessPage from "../Pages/pumpSeal/PumpSealSuccess.js";
 
 
 const AllRoute = () => {
   return (
     <Routes>
       <Route path="/SalesInquiry" element={<CreateSales />} />
+      <Route path="/createPump" element={<CreatePumpSeal />} />
+      <Route path="/pumpSealSuccess/:id" element={<PumpSealSuccessPage />} />
+      <Route path="/editSales" element={<EditSales />} />
+      <Route path="/SalesInquiry/:sId" element={<CreateSales />} />
       <Route path="/Quotation" element={<Quotation/>} />
       <Route path="/OfmId" element={<OfmId/>} />
       <Route path="/OfmCommunication" element={<OfmCommunication/>}/>  
@@ -22,7 +29,7 @@ const AllRoute = () => {
       <Route path="/Customer" element={<Customer/>}/>
       <Route path="/editCustomer" element={<EditCustomer/>}/>
       <Route path="/registerSuccess/:id" element={<RegistrationSuccessPage />}/>
-      <Route path="/salesSuccess/:id" element={<SalesSuccessPage />}/>
+      <Route path="/salesSuccess/:sId" element={<SalesSuccessPage />}/>
       <Route path="/updateSuccess/:id" element={<UpdateSuccessPage />}/>
     </Routes>
   );

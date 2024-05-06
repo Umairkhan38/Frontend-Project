@@ -20,10 +20,10 @@ export default function CreateSales() {
 
 
   const [formData, setFormData] = useState({
-        companyId: 0,
-        categoryId: 0,
+        companyId: "",
+        categoryId: "",
         categoryName: "",
-        customerId: 0,
+        customerId: "",
         customerName: "",
         customerAddress: "",
         contactPerson: "",
@@ -31,41 +31,53 @@ export default function CreateSales() {
         specialComments: "",
         mobileNo: "",
         source: "",
-        branchId: 0,
+        branchId: "",
         insertedByUserId: "123",
         lastUpdatedByUserId: "1231",
-        industry: 0,
+        industry: "",
         salesItems: []
     });
   
   
 
-  //  useEffect(()=>{
-  //   if(sId!==0){
-  //     axios.get(`https://lens-svc.azurewebsites.net/lens-svc/customer/get?customerRefrenceNumber=${sId}`)
-  //     .then(res=>{
-  //       const {data} = res;
-  //         setFormData(data);
-  //         console.log("the sId fetched data is ",data)
+   useEffect(()=>{
+    if(sId!==0){
+      axios.get(`https://lens-svc.azurewebsites.net/lens-svc/salesInquiry/get/${sId}`)
+      .then(res=>{
+        const {data} = res;
+          setFormData(data);
+          console.log("the sId fetched data is ",data)
 
-  //     }) 
-  //     .catch(err=>{
-  //       console.log(err)
-  //     })
+      }) 
+      .catch(err=>{
+        console.log(err)
+      })
 
-  //   }else{
-  //     setFormData({ branchId: '',
-  //     name: '',
-  //     customerDetail:[],
-  //     insertedByUserId:'1""223',
-  //     lastUpdatedByUserId:'1""223',
-  //     insertedOn:'',
-  //     lastUpdatedOn:''})
+    }else{
+      setFormData(
+        {
+          companyId: "",
+          categoryId: "",
+          categoryName: "",
+          customerId: "",
+          customerName: "",
+          customerAddress: "",
+          contactPerson: "",
+          designation: "",
+          specialComments: "",
+          mobileNo: "",
+          source: "",
+          branchId: "",
+          insertedByUserId: "123",
+          lastUpdatedByUserId: "1231",
+          industry: "",
+          salesItems: []
+      })
 
-  //   }
+    }
     
     
-  // },[sId])
+  },[sId])
 
 
 
@@ -114,6 +126,15 @@ export default function CreateSales() {
               springElement: "",
               hardware: "",
               fasteners: ""
+            }, 
+            {
+              mocType: "OB MOC",
+              matingRing: "",
+              sealRing: "",
+              elastomer: "",
+              springElement: "",
+              hardware: "",
+              fasteners: ""
             }
           ]
         }
@@ -135,6 +156,7 @@ export default function CreateSales() {
   };
   
 
+ 
 
 
   const handleSubmit = async(e) => {
@@ -160,71 +182,17 @@ export default function CreateSales() {
       formData.insertedOn = dateTime;
       formData.lastUpdatedOn = dateTime;
       formData.inquiryDate = dateTime;
-      // formData.insertedOn = "2""24-""4-28T12:32:46.141Z";
-      // formData.lastUpdatedOn = "2""24-""4-28T12:32:46.141Z";
-      // formData.inquiryDate = "2""24-""4-28T12:32:46.141Z";
-
-
-      // delete formData.salesItems[formData.salesItems.length -1]['']
-      // const data = {
-      //   "inquiryDate": "2""24-""4-29 13:14:3""",
-      //   "companyId": "",
-      //   "categoryId": "",
-      //   "categoryName": "",
-      //   "customerId": "",
-      //   "customerName": "",
-      //   "customerAddress": "",
-      //   "contactPerson": "",
-      //   "designation": "",
-      //   "specialComments": "",
-      //   "mobileNo": "",
-      //   "source": "",
-      //   "branchId": "",
-      //   "insertedOn": "2""24-""4-29 13:14:3""",
-      //   "lastUpdatedOn": "2""24-""4-29 13:14:3""",
-      //   "insertedByUserId": "",
-      //   "lastUpdatedByUserId": "",
-      //   "industry": "",
-      //   "salesItems": [
-      //     {
-      //       "quantity": "",
-      //       "unit": "",
-      //       "newOrExisting": "",
-      //       "type": "",
-      //       "size": "",
-      //       "headerDescription": "",
-      //       "itemDescription": "",
-      //       "ciCode": "",
-      //       "insertedOn": "2""24-""4-29 13:14:3""",
-      //       "lastUpdatedOn": "2""24-""4-29 13:14:3""",
-      //       "insertedByUserId": "",
-      //       "lastUpdatedByUserId": "",
-      //       "moc": [
-      //         {
-      //           "mocType": "",
-      //           "matingRing": "",
-      //           "sealRing": "",
-      //           "elastomer": "",
-      //           "springElement": "",
-      //           "hardware": "",
-      //           "fasteners": ""
-      //         }
-      //       ]
-      //     }
-      //   ]
-      // };
+       
       
-      // const jsonObject = JSON.parse(JSON.stringify(data));
-      // setFormData(jsonObject)
       console.log("formData sales is ",formData);
-
-    const res = await axios.post("https://lens-svc.azurewebsites.net/lens-svc/salesInquiry/save", formData);
+      const res = await axios.post("https://lens-svc.azurewebsites.net/lens-svc/salesInquiry/save", formData);
     console.log("response is ",res.data);
     navigate(`/salesSuccess/${res.data}`);
 
     // Add form submission logic here
 
   };
+
 
 
 
@@ -240,15 +208,19 @@ export default function CreateSales() {
       // If customerDetail is not defined or empty, set insertedOn and lastUpdatedOn for formData
       // formData.insertedOn = dateTime;
       formData.lastUpdatedOn = dateTime;
-
-    const res = await axios.put("https://lens-svc.azurewebsites.net/lens-svc/customer/Update", formData);
+     
+      console.log("formData inside update ",formData);
+      
+      
+    const res = await axios.put("https://lens-svc.azurewebsites.net/lens-svc/salesInquiry/Update", formData);
     console.log("response from update is ",res.data);
 
     
-    console.log(formData);
     sId="";
-    navigate(`/updateSuccess/${formData.customerReferenceNumber}`);
+    navigate(`/salesSuccess/${formData.inquiryNumber}`);
   }
+
+
 
   const cancelUpdate = ()=>{
 
@@ -264,10 +236,8 @@ export default function CreateSales() {
 
  
   return (
-
- 
     <Container className="container" sx= {{marginTop:"20px", backgroundColor:"rgb(250, 251, 251)"}}>
-      {!sId?<h1 style={{marginLeft:"20px"}}>New Sales Inquiry :</h1> : <h1 style={{marginLeft:"20px"}}>Update Sales Inquiry :</h1> }
+   {!sId?<h1 style={{marginLeft:"20px"}}>New Sales Inquiry :</h1> : <h1 style={{marginLeft:"20px"}}>Update Sales Inquiry :</h1> }
       <form onSubmit={handleSubmit} className="form-style">
         <Grid container spacing={2}>
          {sId &&<Grid item xs={4}>
