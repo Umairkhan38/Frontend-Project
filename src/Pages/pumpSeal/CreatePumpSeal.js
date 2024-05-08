@@ -256,7 +256,7 @@ export default function CreatePumpSeal() {
     try {
       const res = await axios.post("https://lens-svc.azurewebsites.net/lens-svc/pumSeal/save", formData);
       console.log("response is ", res.data);
-      // navigate(`/pumpSealSuccess/${res.data}`);
+      navigate(`/pumpSealSuccess/${res.data}`);
     }
     catch (err) {
       console.log(err);
@@ -447,14 +447,7 @@ export default function CreatePumpSeal() {
                 onChange={handleChange} />
             </Grid>
 
-            <Grid item xs={4}>
-              <InputLabel className="ip-label" >Customer Address</InputLabel >
-              <TextField
-                className="text-field"
-                name="customerAddress"
-                value={formData.customerAddress}
-                onChange={handleChange} />
-            </Grid>
+          
 
             <Grid item xs={4}>
               <InputLabel className="ip-label" >Bearing BKT</InputLabel >
@@ -890,7 +883,7 @@ export default function CreatePumpSeal() {
               <InputLabel className="ip-label" >Opearating Temprature</InputLabel >
               <TextField
                 className="text-field"
-                name="operatingTemprature"
+                name="operatingTemperature"
                 value={formData.operatingTemperature}
                 onChange={handleChange} />
             </Grid>
@@ -899,7 +892,7 @@ export default function CreatePumpSeal() {
               <InputLabel className="ip-label" >Minimum Operating Temprature</InputLabel >
               <TextField
                 className="text-field"
-                name="minOperatingTemprature"
+                name="minOperatingTemperature"
                 value={formData.minOperatingTemperature}
                 onChange={handleChange} />
             </Grid>
@@ -917,7 +910,7 @@ export default function CreatePumpSeal() {
               <InputLabel className="ip-label" >Freez Point</InputLabel >
               <TextField
                 className="text-field"
-                name="freezPoint"
+                name="freezePoint"
                 value={formData.freezePoint}
                 onChange={handleChange} />
             </Grid>
@@ -1002,7 +995,7 @@ export default function CreatePumpSeal() {
            <InputLabel className="ip-label" >Barrier OR Buffer plan:</InputLabel >
            <TextField
              className="text-field"
-             name="barrierORBufferPlan"
+             name="barrierOrBufferPlan"
              value={formData.barrierOrBufferFluid}
              onChange={handleChange} />
          </Grid>
@@ -1111,7 +1104,7 @@ export default function CreatePumpSeal() {
            <InputLabel className="ip-label" >d1-Sleev OD:</InputLabel >
            <TextField
              className="text-field"
-             name="d1sleevOd"
+             name="d1SleeveOd"
              value={formData.d1SleeveOd}
              onChange={handleChange} />
          </Grid>
