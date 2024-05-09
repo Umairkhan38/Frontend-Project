@@ -13,15 +13,22 @@ import EditSales from "../Pages/salesinquiryPage/EditSales.js";
 import CreatePumpSeal from "../Pages/pumpSeal/CreatePumpSeal.js";
 import PumpSealSuccessPage from "../Pages/pumpSeal/PumpSealSuccess.js";
 import EditPump from "../Pages/pumpSeal/EditPumpSeal.js";
+import CreateRotatory from "../Pages/rotatoryJoint/CreateRotatory.js";
+import RotarySuccessPage from "../Pages/rotatoryJoint/RotarySuccess.js";
+import EditRotary from "../Pages/rotatoryJoint/EditRotryJoint.js";
 
 
 const AllRoute = () => {
   return (
     <Routes>
       <Route path="/SalesInquiry" element={<CreateSales />} />
+      <Route path="/createRotary" element={<CreateRotatory />} />
+      <Route path="/createRotary/:rjId" element={<CreateRotatory />} />
+      <Route path="/rotarySuccess/:id" element={<RotarySuccessPage />} />
       <Route path="/createPump" element={<CreatePumpSeal />} />
       <Route path="/createPump/:pId" element={<CreatePumpSeal />} />
       <Route path="/editPump" element={<EditPump />} />
+      <Route path="/editRotary" element={<EditRotary />} />
       <Route path="/pumpSealSuccess/:id" element={<PumpSealSuccessPage />} />
       <Route path="/editSales" element={<EditSales />} />
       <Route path="/SalesInquiry/:sId" element={<CreateSales />} />

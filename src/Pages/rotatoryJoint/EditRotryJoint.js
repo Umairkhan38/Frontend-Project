@@ -40,7 +40,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 
 
-export default function EditPump() {
+export default function EditRotary() {
   const [data, setData] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);  
   const [isDeleted, setIsDeleted] = useState(false);  
@@ -54,7 +54,7 @@ export default function EditPump() {
   // const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
   
   useEffect(() => {
-    axios.get(`https://lens-svc.azurewebsites.net/lens-svc/pumSeal/getAllPumSealByFilter?pageNo=${currentPage}&pageSize=${itemsPerPage}`)
+    axios.get(`https://lens-svc.azurewebsites.net/lens-svc/rotaryJoint/getAllRotaryJointByFilter?pageNo=${currentPage}&pageSize=${itemsPerPage}`)
       .then(res => {
         setData(res.data);
         console.log("the fetched data is ",res.data);
@@ -71,8 +71,8 @@ export default function EditPump() {
     
     const editDetail = (detail) => {
       // setEditData(detail.customerReferenceNumber);
-      console.log("edit detail is ", detail.pumSealDrfNo);
-      navigate(`/createPump/${detail.pumpSealDrfNumber}`)
+      console.log("edit detail is ", detail.rotaryDrfNumber);
+      navigate(`/createRotary/${detail.rotaryDrfNumber}`)
     };
     
 
@@ -100,8 +100,8 @@ export default function EditPump() {
 
   const deleteDetail = async (crId) => {
     try {
-      await axios.delete(`https://lens-svc.azurewebsites.net/lens-svc/pumSeal/delete?pumSealDrfNo=${crId}`);
-      const newData = data.filter(item => item.pumpSealDrfNumber !== crId);
+      await axios.delete(`https://lens-svc.azurewebsites.net/lens-svc/rotaryJoint/delete?rotaryJointDrfNo=${crId}`);
+      const newData = data.filter(item => item.rotaryDrfNumber !== crId);
       console.log("data is ",data)
       console.log("New data is ",newData)
       setData(newData);
@@ -126,12 +126,12 @@ export default function EditPump() {
           <TableHead>
             <TableRow>
               <StyledTableCell>Sr No</StyledTableCell>
-              <StyledTableCell align="right">pumpSeal Drf Number</StyledTableCell>
+              <StyledTableCell align="right">Rotary Drf Number</StyledTableCell>
               <StyledTableCell align="right">Branch</StyledTableCell>
               <StyledTableCell align="right">model</StyledTableCell>
-              <StyledTableCell align="right">Created Date</StyledTableCell>
-              <StyledTableCell align="right">Last Edited Date</StyledTableCell>
-              <StyledTableCell align="right">Performace</StyledTableCell>
+              <StyledTableCell align="right">Equipment</StyledTableCell>
+              <StyledTableCell align="right">Equipment</StyledTableCell>
+              <StyledTableCell align="right">Speed</StyledTableCell>
               <StyledTableCell align="right">Action</StyledTableCell>
             </TableRow>
           </TableHead>
@@ -144,16 +144,16 @@ export default function EditPump() {
                   {index+1}
                 </StyledTableCell>
               
-                <StyledTableCell align="right">{row.pumpSealDrfNumber}</StyledTableCell>
+                <StyledTableCell align="right">{row.rotaryDrfNumber}</StyledTableCell>
                 <StyledTableCell align="right">{row.branch}</StyledTableCell>
                 <StyledTableCell align="right">{row.model}</StyledTableCell>
-                <StyledTableCell align="right">{row.createdDate}</StyledTableCell>
-                <StyledTableCell align="right">{row.lastEditedDate}</StyledTableCell>
-                <StyledTableCell align="right">{row.performance}</StyledTableCell>
+                <StyledTableCell align="right">{row.equipment}</StyledTableCell>
+                <StyledTableCell align="right">{row.speed}</StyledTableCell>
+                <StyledTableCell align="right">{row.flowRate}</StyledTableCell>
                 <StyledTableCell align="right">
                   <button onClick={() => editDetail(row)} style={{margin:'0px 3px', border:'none', backgroundColor:'transparent', cursor:'pointer'}}><EditIcon style={{ color: 'blue' }} /></button>
                   <button style={{border:'none', backgroundColor:'transparent', cursor:'pointer'}} 
-                  onClick={() => deleteDetail(row.pumpSealDrfNumber)}><DeleteIcon style={{ color: 'red' }} /></button>
+                  onClick={() => deleteDetail(row.rotaryDrfNumber)}><DeleteIcon style={{ color: 'red' }} /></button>
                 </StyledTableCell>
               </StyledTableRow>
             ))}
