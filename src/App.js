@@ -16,6 +16,7 @@ function App() {
   const [isSidebar, setIsSidebar] = useState(true);
   const location = useLocation();
   const isLogin = location.pathname === '/login';
+  const resetPath = location.pathname === '/reset';
    
 
   const navigate = useNavigate();
@@ -38,7 +39,7 @@ function App() {
         <div className="app">
           <main className="content">
         {!isSidebar&&token&&<CustomSidebar  isSidebar={isSidebar} setIsSidebar={setIsSidebar} />}
-      {!isLogin&&<Topbar   isSidebar={isSidebar} setIsSidebar={setIsSidebar} /> }
+      {(isLogin===false&&resetPath==false)?(<Topbar isSidebar={isSidebar} setIsSidebar={setIsSidebar} />):null }
           <AllRoute  isSidebar={isSidebar}/> 
           </main>
         </div>
