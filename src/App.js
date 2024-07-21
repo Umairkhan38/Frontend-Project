@@ -1,24 +1,35 @@
 import { useState } from "react";
 import Topbar from "./components/global/TopBar";
 import CustomSidebar from "./components/global/SideBar";
-import Dashboard from "./components/dashboard";
-// import {AllRoutes} from './route/AllRoutes'
-
-// import Team from "./scenes/team";
-// import Invoices from "./scenes/invoices";
-// import Contacts from "./scenes/contacts";
-// import Bar from "./scenes/bar";
-// import Form from "./scenes/form";
-// import Line from "./scenes/line";                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+import './App.css'                                                                              
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { ColorModeContext, useMode } from "./theme";
-import AllRoute from '../src/router/allRoute'
-// import Calendar from "./scenes/calendar/calendar";
+import AllRoute from './router/allRoute.js'
+import { useEffect } from "react";
+import { useAuth } from "./contextApi/AuthContext.js";
+import { useLocation, useNavigate } from "react-router-dom";
+import useToken from "./contextApi/useToken.js";
 
 
 function App() {
   const [theme, colorMode] = useMode();
   const [isSidebar, setIsSidebar] = useState(true);
+  const location = useLocation();
+  const isLogin = location.pathname === '/login';
+   
+
+  const navigate = useNavigate();
+  const token = useToken();
+
+  useEffect(()=>{
+    if(!token){
+      navigate('/login')
+    }
+
+  },[])
+
+
+  console.log("isSidebar is ",isSidebar)
 
   return (
       <ColorModeContext.Provider value={colorMode}>
@@ -26,9 +37,9 @@ function App() {
         <CssBaseline />
         <div className="app">
           <main className="content">
-          <CustomSidebar isSidebar={isSidebar} />
-          <Topbar setIsSidebar={setIsSidebar} />
-              <AllRoute/>
+        {!isSidebar&&token&&<CustomSidebar  isSidebar={isSidebar} setIsSidebar={setIsSidebar} />}
+      {!isLogin&&<Topbar   isSidebar={isSidebar} setIsSidebar={setIsSidebar} /> }
+          <AllRoute  isSidebar={isSidebar}/> 
           </main>
         </div>
       </ThemeProvider>
